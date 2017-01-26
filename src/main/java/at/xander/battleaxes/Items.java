@@ -8,44 +8,24 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 public class Items {
 	public static Item iron_battleaxe, gold_battleaxe, diamond_battleaxe;
 
-	public static void initialise() {
-		// Create Items
-		constructTools();
-		// Register Item Textures
-		registerTextures();
-		// Register Items in the Registry
-		registerItems();
-		// Register Crafing
-		registerCrafting();
+	public static void initialise(boolean[] allows) {
+		if (allows[0]) {
+			registerBattleaxe(iron_battleaxe, "ingotIron", "iron_battleaxe", ToolMaterial.IRON, 0.0f);
+		}
+		if (allows[1]) {
+			registerBattleaxe(gold_battleaxe, "ingotGold", "gold_battleaxe", ToolMaterial.GOLD, 1.0f);
+		}
+		if (allows[2]) {
+			registerBattleaxe(diamond_battleaxe, "gemDiamond", "diamond_battleaxe", ToolMaterial.EMERALD, 0.0f);
+		}
 	}
 
-	private static void registerCrafting() {
-		craftBattleaxe("ingotIron", iron_battleaxe);
-		craftBattleaxe("ingotGold", gold_battleaxe);
-		craftBattleaxe("gemDiamond", diamond_battleaxe);
-	}
-
-	private static void craftBattleaxe(String material, Item result) {
+	private static void registerBattleaxe(Item axe, String crafting, String unlocName, ToolMaterial material,
+			float extraDamage) {
+		axe = new ItemBattleaxe(material, unlocName, extraDamage);
+		axe.setTextureName("battleaxes:" + unlocName);
+		GameRegistry.registerItem(axe, unlocName);
 		GameRegistry.addRecipe(
-				new ShapedOreRecipe(result, "MMM", "MSM", " S ", 'M', material, 'S', net.minecraft.init.Items.stick));
-	}
-
-	private static void registerItems() {
-		GameRegistry.registerItem(iron_battleaxe, "iron_battleaxe");
-		GameRegistry.registerItem(gold_battleaxe, "gold_battleaxe");
-		GameRegistry.registerItem(diamond_battleaxe, "diamond_battleaxe");
-	}
-
-	private static void constructTools() {
-		iron_battleaxe = new ItemBattleaxe(ToolMaterial.IRON, "iron_battleaxe", 0.0f);
-		diamond_battleaxe = new ItemBattleaxe(ToolMaterial.EMERALD, "gold_battleaxe", 0.0f);
-		// Make gold stronger than normal
-		gold_battleaxe = new ItemBattleaxe(ToolMaterial.GOLD, "diamond_battleaxe", 1.0f);
-	}
-
-	private static void registerTextures() {
-		iron_battleaxe.setTextureName("battleaxes:iron_battleaxe");
-		gold_battleaxe.setTextureName("battleaxes:gold_battleaxe");
-		diamond_battleaxe.setTextureName("battleaxes:diamond_battleaxe");
+				new ShapedOreRecipe(axe, "MSM", "MSM", " S ", 'M', crafting, 'S', net.minecraft.init.Items.stick));
 	}
 }
