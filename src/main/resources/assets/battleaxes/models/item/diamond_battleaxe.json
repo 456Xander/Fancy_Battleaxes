@@ -1,0 +1,6 @@
+{
+    "parent": "battleaxes:item/tool",
+    "textures": {
+        "layer0": "battleaxes:items/diamond_battleaxe"
+    }
+}
