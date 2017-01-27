@@ -22,7 +22,7 @@ plugins {
 */
 version = "1.0"
 group= "at.xander.battleaxes" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "Battleaxes[1.9.4/1.10.2]"
+archivesBaseName = "Battleaxes[1.9.4,1.10.2]"
 
 minecraft {
     version = "1.9.4-12.17.0.1987"
