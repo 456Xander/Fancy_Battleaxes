@@ -7,7 +7,11 @@
 ##############################################################################
 
 # Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+<<<<<<< HEAD
 DEFAULT_JVM_OPTS="-Xmx1G"
+=======
+DEFAULT_JVM_OPTS=""
+>>>>>>> 6f0bec9b2396bb0c2ad18918f92fb4c640355b7f
 
 APP_NAME="Gradle"
 APP_BASE_NAME=`basename "$0"`

@@ -1,5 +1,6 @@
 package at.xander.battleaxes;
 
+<<<<<<< HEAD
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -10,4 +11,8 @@ public class ClientProxy extends Server_Proxy {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0,
 				new ModelResourceLocation(texture, "inventory"));
 	}
+=======
+public class ClientProxy extends Server_Proxy{
+
+>>>>>>> 6f0bec9b2396bb0c2ad18918f92fb4c640355b7f
 }
