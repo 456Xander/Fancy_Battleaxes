@@ -8,13 +8,13 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.config.Configuration;
 
-@Mod(modid = "battleaxes", name = "Battleaxes", version = "1.0.0")
+@Mod(modid = "battleaxes", name = "Battleaxes", version = "1.0.1")
 public class BAxe_Mod {
 	// 1. Iron, 2. Gold, 3. Diamond
 	boolean[] allows;
 	public static BAxe_Mod instance;
 	@SidedProxy(clientSide = "at.xander.battleaxes.ClientProxy", serverSide = "at.xander.battleaxes.ServerProxy")
-	public static Server_Proxy proxy;
+	public static ServerProxy proxy;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
