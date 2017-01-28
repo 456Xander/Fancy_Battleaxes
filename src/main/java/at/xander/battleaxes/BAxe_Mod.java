@@ -14,7 +14,7 @@ public class BAxe_Mod {
 	boolean[] allows;
 	public static BAxe_Mod instance;
 	@SidedProxy(clientSide = "at.xander.battleaxes.ClientProxy", serverSide = "at.xander.battleaxes.ServerProxy")
-	public static Server_Proxy proxy;
+	public static ServerProxy proxy;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
