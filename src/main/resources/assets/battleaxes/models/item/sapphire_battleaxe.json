@@ -1,0 +1,6 @@
+{
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "battleaxes:items/sapphire_battleaxe.png"
+	}
+}
