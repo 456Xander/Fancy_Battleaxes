@@ -1,6 +1,6 @@
 {
 	"parent": "item/handheld",
 	"textures": {
-		"layer0": "battleaxes:items/silver_battleaxe.png"
+		"layer0": "battleaxes:items/silver_battleaxe"
 	}
 }

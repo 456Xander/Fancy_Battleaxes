@@ -4,7 +4,7 @@ import net.minecraftforge.common.config.Configuration;
 
 public class MaterialProperties {
 	private final int harvestLevel, durability, enchantability;
-	private final float efficiency, damage;
+	private final float efficiency, damage, axeDamage, axeSpeed;
 
 	public MaterialProperties(int harvestLevel, int durability, float efficiency, float damage, int enchantability) {
 		this.harvestLevel = harvestLevel;
@@ -12,6 +12,19 @@ public class MaterialProperties {
 		this.efficiency = efficiency;
 		this.damage = damage;
 		this.enchantability = enchantability;
+		this.axeDamage = 0;
+		this.axeSpeed = 0;
+	}
+
+	public MaterialProperties(int harvestLevel, int durability, float efficiency, float damage, int enchantability,
+			float axeDamage, float axeSpeed) {
+		this.harvestLevel = harvestLevel;
+		this.durability = durability;
+		this.efficiency = efficiency;
+		this.damage = damage;
+		this.enchantability = enchantability;
+		this.axeDamage = axeDamage;
+		this.axeSpeed = axeSpeed;
 	}
 
 	public static MaterialProperties getMaterialProperties(Configuration config, MyToolMaterial mat) {
@@ -23,7 +36,10 @@ public class MaterialProperties {
 		float damage = config.getFloat("Damage", mat.toString(), mat.getDamage(), 0, Float.MAX_VALUE, "");
 		int enchantability = config.getInt("Enchantability", mat.toString(), mat.getEnchantability(), 0,
 				Integer.MAX_VALUE, "");
-		return new MaterialProperties(harvestLevel, durability, efficiency, damage, enchantability);
+		float axeDamage = config.getFloat("Axe_Damage", mat.toString(), mat.getAxeDamage(), 0.0f, Float.MAX_VALUE, "");
+		float axeSpeed = config.getFloat("Axe_Attack_Speed", mat.toString(), mat.getAxeSpeed(), -4.0f, Float.MAX_VALUE,
+				"");
+		return new MaterialProperties(harvestLevel, durability, efficiency, damage, enchantability, axeDamage, axeSpeed);
 
 	}
 
@@ -46,5 +62,14 @@ public class MaterialProperties {
 	public float getDamage() {
 		return damage;
 	}
+
+	public float getAxeDamage() {
+		return axeDamage;
+	}
+
+	public float getAxeSpeed() {
+		return axeSpeed;
+	}
+	
 
 }

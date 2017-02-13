@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.oredict.OreDictionary;
 
 @Mod(modid = "battleaxes", name = "Fancy Battleaxes", version = "1.0.0")
 public class BAxe_Mod {
@@ -34,45 +35,39 @@ public class BAxe_Mod {
 	}
 
 	private void loadEnabled(Configuration config) {
-		allows[0] = config.getBoolean("EnableIron", "Tools", true, "");
-		allows[1] = config.getBoolean("EnableGold", "Tools", true, "");
-		allows[2] = config.getBoolean("EnableDiamond", "Tools", true, "");
-		allows[3] = config.getBoolean("EnableNickel", "Tools", true, "");
-		allows[4] = config.getBoolean("EnableSilver", "Tools", true, "");
-		allows[5] = config.getBoolean("EnableTitanium", "Tools", true, "");
-		allows[6] = config.getBoolean("EnableRuby", "Tools", true, "");
-		allows[7] = config.getBoolean("EnableSapphire", "Tools", true, "");
-		allows[8] = config.getBoolean("EnableAmethyst", "Tools", true, "");
+		allows[0] = config.getBoolean("EnableIron", "1 - Tools", true, "");
+		allows[1] = config.getBoolean("EnableGold", "1 - Tools", true, "");
+		allows[2] = config.getBoolean("EnableDiamond", "1 - Tools", true, "");
+		allows[3] = config.getBoolean("EnableNickel", "1 - Tools", true, "");
+		allows[4] = config.getBoolean("EnableSilver", "1 - Tools", true, "");
+		allows[5] = config.getBoolean("EnableTitanium", "1 - Tools", true, "");
+		allows[6] = config.getBoolean("EnableRuby", "1 - Tools", true, "");
+		allows[7] = config.getBoolean("EnableSapphire", "1 - Tools", true, "");
+		allows[8] = config.getBoolean("EnableAmethyst", "1 - Tools", true, "");
 	}
 
 	private void loadMaterials(Configuration config) {
-		ConfigCategory force = config.getCategory("Force_Overrides");
-		force.setComment(
-				"Forces Override of existing ToolMaterials, if it is false, existing ToolMaterials with the same name will be used if there are some at config load time");
-		if (allows[3]) {
-			MyToolMaterial.NICKEL.initialise(config.getBoolean("Nickel", force.getName(), false, ""),
-					MaterialProperties.getMaterialProperties(config, MyToolMaterial.NICKEL));
-		}
-		if (allows[4]) {
-			MyToolMaterial.SILVER.initialise(config.getBoolean("Silver", force.getName(), false, ""),
-					MaterialProperties.getMaterialProperties(config, MyToolMaterial.SILVER));
-		}
-		if (allows[5]) {
-			MyToolMaterial.TITANIUM.initialise(config.getBoolean("Titanium", force.getName(), false, ""),
-					MaterialProperties.getMaterialProperties(config, MyToolMaterial.TITANIUM));
-		}
-		if (allows[6]) {
-			MyToolMaterial.RUBY.initialise(config.getBoolean("Ruby", force.getName(), false, ""),
-					MaterialProperties.getMaterialProperties(config, MyToolMaterial.RUBY));
-		}
-		if (allows[7]) {
-			MyToolMaterial.SAPPHIRE.initialise(config.getBoolean("Nickel", force.getName(), false, ""),
-					MaterialProperties.getMaterialProperties(config, MyToolMaterial.SAPPHIRE));
-		}
-		if (allows[8]) {
-			MyToolMaterial.AMETHYST.initialise(config.getBoolean("Amethyst", force.getName(), false, ""),
-					MaterialProperties.getMaterialProperties(config, MyToolMaterial.AMETHYST));
-		}
+		// For testing
+		// OreDictionary.registerOre("gemRuby",net.minecraft.init.Items.EGG);
+
+		// ConfigCategory force = config.getCategory("Force_Overrides");
+		// force.setComment(
+		// "Forces Override of existing ToolMaterials, if it is false, existing
+		// ToolMaterials with the same name will be used if there are some at
+		// config load time");
+
+		MyToolMaterial.NICKEL.initialise(MaterialProperties.getMaterialProperties(config, MyToolMaterial.NICKEL));
+
+		MyToolMaterial.SILVER.initialise(MaterialProperties.getMaterialProperties(config, MyToolMaterial.SILVER));
+
+		MyToolMaterial.TITANIUM.initialise(MaterialProperties.getMaterialProperties(config, MyToolMaterial.TITANIUM));
+
+		MyToolMaterial.RUBY.initialise(MaterialProperties.getMaterialProperties(config, MyToolMaterial.RUBY));
+
+		MyToolMaterial.SAPPHIRE.initialise(MaterialProperties.getMaterialProperties(config, MyToolMaterial.SAPPHIRE));
+
+		MyToolMaterial.AMETHYST.initialise(MaterialProperties.getMaterialProperties(config, MyToolMaterial.AMETHYST));
+
 	}
 
 	@EventHandler

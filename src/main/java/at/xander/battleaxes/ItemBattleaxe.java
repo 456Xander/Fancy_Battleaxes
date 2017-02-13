@@ -20,9 +20,6 @@ public class ItemBattleaxe extends ItemTool {
 			Blocks.LADDER, Blocks.WOODEN_BUTTON, Blocks.WOODEN_PRESSURE_PLATE });
 	private static final float[] ATTACK_DAMAGES = new float[] { 6.0F, 8.0F, 9.5F, 10.0F, 9.0F };
 	private static final float[] ATTACK_SPEEDS = new float[] { -3.4F, -3.4F, -3.3F, -3.2F, -3.1F };
-	
-	private static final float[] C_ATTACK_DAMAGES = new float[] { 6.0F, 8.0F, 9.5F, 10.0F, 9.0F };
-	private static final float[] C_ATTACK_SPEEDS = new float[] { -3.4F, -3.4F, -3.3F, -3.2F, -3.1F };
 
 	public ItemBattleaxe(Item.ToolMaterial material, String unlocalizedName) {
 		super(material, EFFECTIVE_ON);
@@ -30,12 +27,12 @@ public class ItemBattleaxe extends ItemTool {
 		this.damageVsEntity = ATTACK_DAMAGES[material.ordinal()];
 		this.attackSpeed = ATTACK_SPEEDS[material.ordinal()];
 	}
-	
+
 	public ItemBattleaxe(MyToolMaterial material, String unlocalizedName) {
 		super(material.getMat(), EFFECTIVE_ON);
 		setUnlocalizedName(unlocalizedName);
-		this.damageVsEntity = C_ATTACK_DAMAGES[material.ordinal()];
-		this.attackSpeed = C_ATTACK_SPEEDS[material.ordinal()];
+		this.damageVsEntity = material.getAxeDamage();
+		this.attackSpeed = material.getAxeSpeed();
 	}
 
 	protected ItemBattleaxe(Item.ToolMaterial material, float damage, float speed) {
