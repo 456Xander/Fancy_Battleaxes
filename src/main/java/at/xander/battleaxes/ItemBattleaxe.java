@@ -31,8 +31,8 @@ public class ItemBattleaxe extends ItemTool {
 	public ItemBattleaxe(MyToolMaterial material, String unlocalizedName) {
 		super(material.getMat(), EFFECTIVE_ON);
 		setUnlocalizedName(unlocalizedName);
-		this.damageVsEntity = material.getAxeDamage();
-		this.attackSpeed = material.getAxeSpeed();
+		this.damageVsEntity = material.getActualAxeDamage();
+		this.attackSpeed = material.getActualAxeSpeed();
 	}
 
 	protected ItemBattleaxe(Item.ToolMaterial material, float damage, float speed) {
