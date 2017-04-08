@@ -26,7 +26,7 @@ public class BAxe_Mod {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
 		// TODO Config
-		allows = new boolean[9];
+		allows = new boolean[10];
 		Configuration config = new Configuration(e.getSuggestedConfigurationFile());
 		config.load();
 		loadEnabled(config);
@@ -44,6 +44,7 @@ public class BAxe_Mod {
 		allows[6] = config.getBoolean("EnableRuby", "1 - Tools", true, "");
 		allows[7] = config.getBoolean("EnableSapphire", "1 - Tools", true, "");
 		allows[8] = config.getBoolean("EnableAmethyst", "1 - Tools", true, "");
+		allows[9] = config.getBoolean("EnableStone", "1 - Tools", true, "");
 	}
 
 	private void loadMaterials(Configuration config) {
