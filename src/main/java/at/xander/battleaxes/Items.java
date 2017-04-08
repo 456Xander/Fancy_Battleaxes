@@ -10,13 +10,13 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class Items {
 	public static Item iron_battleaxe, gold_battleaxe, diamond_battleaxe, nickel_battleaxe, silver_battleaxe,
-			titanium_battleaxe, ruby_battleaxe, sapphire_battleaxe, amethyst_battleaxe;
+			titanium_battleaxe, ruby_battleaxe, sapphire_battleaxe, amethyst_battleaxe, stone_battleaxe;
 
 	/**
 	 * 
 	 * @param allows
 	 *            0: iron; 1: gold; 2: diamond; 3: Nickel; 4: Silver; 5:
-	 *            Titanium; 6: Ruby; 7: Sappire; 8: Amethyst
+	 *            Titanium; 6: Ruby; 7: Sappire; 8: Amethyst; 9: Stone
 	 */
 	public static void initialise(boolean[] allows) {
 
@@ -30,6 +30,7 @@ public class Items {
 		registerBattleaxe(ruby_battleaxe, "gemRuby", "ruby_battleaxe", MyToolMaterial.RUBY, allows[6]);
 		registerBattleaxe(sapphire_battleaxe, "gemSapphire", "sapphire_battleaxe", MyToolMaterial.SAPPHIRE, allows[7]);
 		registerBattleaxe(amethyst_battleaxe, "gemAmethyst", "amethyst_battleaxe", MyToolMaterial.AMETHYST, allows[8]);
+		registerBattleaxe(stone_battleaxe, "listAllStone", "stone_battleaxe", ToolMaterial.STONE, allows[9]);
 	}
 
 	private static void registerBattleaxe(Item axe, String crafting, String unlocName, ToolMaterial material,
