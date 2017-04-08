@@ -13,6 +13,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -117,12 +118,12 @@ public class ItemBattleaxe extends ItemSword {
 		if (equipmentSlot == EntityEquipmentSlot.MAINHAND) {
 			// Remove the damage and attack speed of the sword:
 			// Add the new ones
-			multimap.removeAll(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName());
-			multimap.removeAll(SharedMonsterAttributes.ATTACK_SPEED.getAttributeUnlocalizedName());
+			multimap.removeAll(SharedMonsterAttributes.ATTACK_DAMAGE.getName());
+			multimap.removeAll(SharedMonsterAttributes.ATTACK_SPEED.getName());
 
-			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName(),
+			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(),
 					new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Tool modifier", (double) this.damageVsEntity, 0));
-			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getAttributeUnlocalizedName(),
+			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(),
 					new AttributeModifier(ATTACK_SPEED_MODIFIER, "Tool modifier", (double) this.attackSpeed, 0));
 		}
 
@@ -132,14 +133,15 @@ public class ItemBattleaxe extends ItemSword {
 	private String toolClass;
 
 	@Override
-	public int getHarvestLevel(ItemStack stack, String toolClass) {
-		int level = super.getHarvestLevel(stack, toolClass);
+	public int getHarvestLevel(ItemStack stack, String toolClass, EntityPlayer player, IBlockState blockstate) {
+		int level = super.getHarvestLevel(stack, toolClass, player, blockstate);
 		if (level == -1 && toolClass != null && toolClass.equals(this.toolClass)) {
 			return this.toolMaterial.getHarvestLevel();
 		} else {
 			return level;
 		}
 	}
+
 
 	@Override
 	public Set<String> getToolClasses(ItemStack stack) {
