@@ -13,3 +13,4 @@
 /usernamecache.json
 /.classpath
 /.project
+*.launch
