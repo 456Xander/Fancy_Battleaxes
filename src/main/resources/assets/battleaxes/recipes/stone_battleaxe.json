@@ -1,0 +1,22 @@
+{
+	
+	
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"MMM",
+		"MSM",
+		" S "
+	],
+	"key": {
+		"S": {
+			"item": "minecraft:stick"
+		},
+		"M": {
+			"item": "minecraft:cobblestone"
+		}
+	},
+	"result": {
+		"item": "battleaxes:stone_battleaxe"
+	}
+	
+}

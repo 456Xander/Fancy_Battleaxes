@@ -1,0 +1,5 @@
+{
+    "conditions": {
+        "enableByConfig": "at.xander.battleaxes.ConfigCondition"
+    }
+}
