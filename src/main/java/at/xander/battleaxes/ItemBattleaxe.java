@@ -28,7 +28,7 @@ public class ItemBattleaxe extends ItemAxe {
 
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		return enchantment.type == EnumEnchantmentType.BREAKABLE || enchantment.type == EnumEnchantmentType.WEAPON;
+		return (enchantment.type == EnumEnchantmentType.BREAKABLE || enchantment.type == EnumEnchantmentType.WEAPON) && (!enchantment.getName().equals("enchantment.sweeping"));
 	}
 
 }

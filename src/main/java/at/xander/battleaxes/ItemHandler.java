@@ -8,8 +8,6 @@ import gnu.trove.map.TMap;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
-import net.minecraftforge.client.gui.ForgeGuiFactory.ForgeConfigGui.AddModOverrideEntry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemHandler {
 	public static Item stone_battleaxe, iron_battleaxe, gold_battleaxe, diamond_battleaxe, nickel_battleaxe,
@@ -67,7 +65,8 @@ public class ItemHandler {
 			item.setCreativeTab(CreativeTabs.COMBAT);
 		}
 	}
-
+	
+	@SafeVarargs
 	private static <T> void addMultipleToCollection(Collection<T> collection, T... objs) {
 		for (T t : objs) {
 			collection.add(t);

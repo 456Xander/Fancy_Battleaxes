@@ -1,7 +1,6 @@
 package at.xander.battleaxes.material;
 
 import java.util.Locale;
-import java.util.Map;
 
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
