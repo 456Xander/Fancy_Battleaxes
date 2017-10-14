@@ -2,7 +2,6 @@ package at.xander.battleaxes;
 
 import at.xander.battleaxes.material.MaterialProperties;
 import at.xander.battleaxes.material.MyToolMaterial;
-import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -10,10 +9,10 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.oredict.OreDictionary;
 
-@Mod(modid = "battleaxes", name = "Fancy Battleaxes", version = "1.0.0")
+@Mod(modid = BAxe_Mod.MODID, name = "Fancy Battleaxes", version = "1.0.0")
 public class BAxe_Mod {
+	public static final String MODID = "battleaxes";
 	/**
 	 * 0: iron; 1: gold; 2: diamond; 3: Nickel; 4: Silver; 5: Titanium; 6: Ruby;
 	 * 7: Sappire; 8: Amethyst

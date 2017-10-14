@@ -48,9 +48,6 @@ public class Items {
 	}
 
 	private static void modifyBattleaxe(Item axe, String crafting, String unlocName, boolean allowed) {
-		BAxe_Mod.proxy.registerTexture(axe, "battleaxes:" + unlocName);
-		axe.setRegistryName(unlocName);
-		GameRegistry.register(axe);
 		if (allowed) {
 			GameRegistry.addRecipe(
 					new ShapedOreRecipe(axe, "MSM", "MSM", " S ", 'M', crafting, 'S', net.minecraft.init.Items.STICK));
