@@ -2,7 +2,7 @@
 	"conditions": [
 		{
 			"type": "enableByConfig",
-			"material": "stone"
+			"material": "nickel"
 		}
 	],
 	"type": "minecraft:crafting_shaped",
@@ -16,10 +16,12 @@
 			"item": "minecraft:stick"
 		},
 		"M": {
-			"item": "minecraft:cobblestone"
+			"type": "forge:ore_dict",
+			"ore": "ingotNickel"
 		}
 	},
 	"result": {
-		"item": "battleaxes:stone_battleaxe"
+		"item": "battleaxes:nickel_battleaxe"
 	}
+	
 }
