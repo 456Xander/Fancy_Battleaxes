@@ -3,6 +3,7 @@ package at.xander.battleaxes;
 import at.xander.battleaxes.material.MyToolMaterial;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 
@@ -14,6 +15,9 @@ public class ItemBattleaxe extends ItemAxe {
 		super(material, ATTACK_DAMAGES[material.ordinal()], ATTACK_SPEEDS[material.ordinal()]);
 		doConstruction(name);
 	}
+	
+		
+	
 
 	public ItemBattleaxe(MyToolMaterial material, String name) {
 		super(material.getMat(), material.getActualAxeDamage(), material.getActualAxeSpeed());

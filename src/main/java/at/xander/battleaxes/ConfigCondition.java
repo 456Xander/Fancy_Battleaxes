@@ -14,7 +14,6 @@ public class ConfigCondition implements IConditionFactory {
 	public BooleanSupplier parse(JsonContext context, JsonObject json) {
 		String name = JsonUtils.getString(json, "material");
 		return () -> BAxe_Mod.instance.allows.get(name);
-
 	}
 
 }
