@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
-@Mod(modid = BAxe_Mod.MODID, name = "Fancy Battleaxes", version = "1.1.1")
+@Mod(modid = BAxe_Mod.MODID, name = "Fancy Battleaxes", version = "1.2")
 public class BAxe_Mod {
 
 	public static final String MODID = "battleaxes";
