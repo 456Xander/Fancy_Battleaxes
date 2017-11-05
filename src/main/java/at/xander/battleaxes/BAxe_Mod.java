@@ -23,10 +23,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class BAxe_Mod {
 
 	public static final String MODID = "battleaxes";
-	/**
-	 * 0: iron; 1: gold; 2: diamond; 3: Nickel; 4: Silver; 5: Titanium; 6: Ruby; 7:
-	 * Sappire; 8: Amethyst, 9: Stone IS NEEDED IN ConfigCondition
-	 */
+
 	public THashMap<String, Boolean> allows = new THashMap<>();
 	@Instance
 	public static BAxe_Mod instance;

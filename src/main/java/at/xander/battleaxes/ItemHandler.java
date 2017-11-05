@@ -1,6 +1,7 @@
 package at.xander.battleaxes;
 
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import at.xander.battleaxes.material.MyToolMaterial;
@@ -12,7 +13,9 @@ import net.minecraft.item.Item.ToolMaterial;
 public class ItemHandler {
 	public static Item stone_battleaxe, iron_battleaxe, gold_battleaxe, diamond_battleaxe, nickel_battleaxe,
 			silver_battleaxe, titanium_battleaxe, ruby_battleaxe, sapphire_battleaxe, amethyst_battleaxe;
-
+	
+	public static List<Item> blackListItem = new LinkedList<>();
+	
 	/**
 	 * 
 	 * @param allows
@@ -63,6 +66,9 @@ public class ItemHandler {
 	private static void addToCreativeTab(Item item, boolean b) {
 		if (b) {
 			item.setCreativeTab(CreativeTabs.COMBAT);
+		}
+		else {
+			blackListItem.add(item);
 		}
 	}
 	
