@@ -1,8 +1,11 @@
 package at.xander.battleaxes;
 
 import at.xander.battleaxes.material.MyToolMaterial;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -33,6 +36,16 @@ public class ItemBattleaxe extends ItemAxe {
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		return (enchantment.type == EnumEnchantmentType.BREAKABLE || enchantment.type == EnumEnchantmentType.WEAPON)
 				&& (!enchantment.getName().equals("enchantment.sweeping"));
+	}
+
+	@Override
+	public float getStrVsBlock(ItemStack stack, IBlockState state) {
+		int i = EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, stack);
+		float f = super.getStrVsBlock(stack, state);
+		if (f > 1.0) {
+			f += i * i + 1;
+		}
+		return f;
 	}
 
 }

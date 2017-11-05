@@ -1,5 +1,8 @@
 package at.xander.battleaxes;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import at.xander.battleaxes.material.MyToolMaterial;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -12,12 +15,13 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 public class Items {
 	public static Item stone_battleaxe, iron_battleaxe, gold_battleaxe, diamond_battleaxe, nickel_battleaxe,
 			silver_battleaxe, titanium_battleaxe, ruby_battleaxe, sapphire_battleaxe, amethyst_battleaxe;
+	public static List<Item> blacklist = new LinkedList<Item>();
 
 	/**
 	 * 
 	 * @param allows
-	 *            0: iron; 1: gold; 2: diamond; 3: Nickel; 4: Silver; 5:
-	 *            Titanium; 6: Ruby; 7: Sappire; 8: Amethyst 9: Stone
+	 *            0: iron; 1: gold; 2: diamond; 3: Nickel; 4: Silver; 5: Titanium;
+	 *            6: Ruby; 7: Sappire; 8: Amethyst 9: Stone
 	 */
 	public static void initialise(boolean[] allows) {
 
@@ -39,12 +43,18 @@ public class Items {
 			boolean allowed) {
 		axe = new ItemBattleaxe(material, unlocName);
 		modifyBattleaxe(axe, crafting, unlocName, allowed);
+		if (!allowed) {
+			blacklist.add(axe);
+		}
 	}
 
 	private static void registerBattleaxe(Item axe, String crafting, String unlocName, MyToolMaterial material,
 			boolean allowed) {
 		axe = new ItemBattleaxe(material, unlocName);
 		modifyBattleaxe(axe, crafting, unlocName, allowed);
+		if (!allowed) {
+			blacklist.add(axe);
+		}
 	}
 
 	private static void modifyBattleaxe(Item axe, String crafting, String unlocName, boolean allowed) {
