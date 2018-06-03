@@ -2,12 +2,16 @@ package at.xander.battleaxes;
 
 import java.io.File;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import at.xander.battleaxes.material.MaterialProperties;
 import at.xander.battleaxes.material.MyToolMaterial;
 import gnu.trove.map.hash.THashMap;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
@@ -79,17 +83,48 @@ public class BAxe_Mod {
 		OreDictionary.registerOre("listAllStone", Blocks.COBBLESTONE);
 
 		MyToolMaterial.NICKEL.initialise(MaterialProperties.getMaterialProperties(config, MyToolMaterial.NICKEL));
+		final Pattern itemPattern = Pattern.compile("(\\w+):(\\w+)#?(\\d*)");
+		
+		registerAdditionalWhitelist(config, itemPattern, MyToolMaterial.NICKEL);
 
 		MyToolMaterial.SILVER.initialise(MaterialProperties.getMaterialProperties(config, MyToolMaterial.SILVER));
+		registerAdditionalWhitelist(config, itemPattern, MyToolMaterial.SILVER);
 
 		MyToolMaterial.TITANIUM.initialise(MaterialProperties.getMaterialProperties(config, MyToolMaterial.TITANIUM));
+		registerAdditionalWhitelist(config, itemPattern, MyToolMaterial.TITANIUM);
 
 		MyToolMaterial.RUBY.initialise(MaterialProperties.getMaterialProperties(config, MyToolMaterial.RUBY));
+		registerAdditionalWhitelist(config, itemPattern, MyToolMaterial.RUBY);
 
 		MyToolMaterial.SAPPHIRE.initialise(MaterialProperties.getMaterialProperties(config, MyToolMaterial.SAPPHIRE));
+		registerAdditionalWhitelist(config, itemPattern, MyToolMaterial.SAPPHIRE);
 
 		MyToolMaterial.AMETHYST.initialise(MaterialProperties.getMaterialProperties(config, MyToolMaterial.AMETHYST));
+		registerAdditionalWhitelist(config, itemPattern, MyToolMaterial.AMETHYST);
 
+	}
+
+	private void registerAdditionalWhitelist(Configuration config, final Pattern itemPattern, MyToolMaterial mat) {
+		String[] whitelist = config.getStringList(mat.toString(), "whitelist", new String[] {},
+				"Additional Items, which are valid for this material can be registered here, items should be entered in the following way:"
+						+ "\n modid:itemname#meta");
+		for (String s : whitelist) {
+			Matcher m = itemPattern.matcher(s);
+			if (m.matches()) {
+				String modid = m.group(1);
+				String itemName = m.group(2);
+				int meta = 0;
+				if (m.groupCount() >= 3) {
+					String tmp = m.group(3);
+					meta = tmp.equals("") ? 0 : Integer.parseInt(m.group(3));
+				}
+				String matName = mat.toString().toLowerCase();
+				OreDictionary.registerOre("ingot" + matName.substring(0, 1).toUpperCase() + matName.substring(1),
+						new ItemStack(Item.REGISTRY.getObject(new ResourceLocation(modid, itemName)), 1, meta));
+				System.out.printf("Found whitelist: %s:%s with meta %d\n", modid, itemName, meta);
+			}
+			
+		}
 	}
 
 	@EventHandler
